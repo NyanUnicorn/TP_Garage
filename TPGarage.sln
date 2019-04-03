@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TPGarage.Database", "TPGarage.Database\TPGarage.Database.sqlproj", "{DC9A3ACF-DB73-4882-B168-1AD2F27BEE56}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPGarage.DataLib", "TPGarage.DataLib\TPGarage.DataLib.csproj", "{35B8ABE4-3AB4-418B-9FD5-CE2DF30AF024}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPGarage.Client", "TPGarage.Client\TPGarage.Client.csproj", "{DE52EC6C-868F-406D-BAAB-98A1C2892647}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,6 +21,14 @@ Global
 		{DC9A3ACF-DB73-4882-B168-1AD2F27BEE56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC9A3ACF-DB73-4882-B168-1AD2F27BEE56}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DC9A3ACF-DB73-4882-B168-1AD2F27BEE56}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{35B8ABE4-3AB4-418B-9FD5-CE2DF30AF024}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35B8ABE4-3AB4-418B-9FD5-CE2DF30AF024}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35B8ABE4-3AB4-418B-9FD5-CE2DF30AF024}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35B8ABE4-3AB4-418B-9FD5-CE2DF30AF024}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE52EC6C-868F-406D-BAAB-98A1C2892647}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE52EC6C-868F-406D-BAAB-98A1C2892647}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE52EC6C-868F-406D-BAAB-98A1C2892647}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE52EC6C-868F-406D-BAAB-98A1C2892647}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
