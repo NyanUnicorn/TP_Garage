@@ -1,0 +1,116 @@
+﻿<UserControl x:Class="TPGarage.Client.Views.BrandFormBinding"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:local="clr-namespace:TPGarage.Client.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="30*"/>
+      <ColumnDefinition Width="3"/>
+      <ColumnDefinition Width="70*"/>
+    </Grid.ColumnDefinitions>
+
+    <!--<ListBox Grid.Column="0" x:Name="_BrandList" DisplayMemberPath="Name"/>-->
+    <ListBox Grid.Column="0" x:Name="_BrandList">
+      <ListBox.ItemTemplate>
+        <DataTemplate>
+          <Grid>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*"/>
+              <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+              <TextBlock      Text="{Binding Path=Name}"/>
+              <TextBlock      Text=" ("/>
+              <TextBlock      Text="{Binding Path=Models.Count}"/>
+              <TextBlock      Text="modèles) "/>
+            </StackPanel>
+            
+            
+
+            <TextBox        Grid.Column="0" 
+                            Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}" 
+                            Visibility="{Binding Path=IsChecked, ElementName=_BrandToggleButton, Converter={StaticResource SharedIsCheckedToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"
+                            Style="{StaticResource TextBoxStyle}"/>
+            
+            <ToggleButton   x:Name="_BrandToggleButton" Grid.Column="1" Content="{icon:Material Kind=Pencil, Spin=True}"/>
+
+          </Grid>
+        </DataTemplate>
+      </ListBox.ItemTemplate>
+    </ListBox>
+    <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch"/>
+
+    <Grid Grid.Column="2" Visibility="{Binding Path=SelectedItem , ElementName=_BrandList, Converter={StaticResource SharedObjectToVisibilityConverter}}">
+
+      <Grid.RowDefinitions>
+        <RowDefinition Height="50*"/>
+        <RowDefinition Height="5"/>
+        <RowDefinition Height="auto"/>
+        <RowDefinition Height="50*"/>
+      </Grid.RowDefinitions>
+
+      <Grid Grid.Row="0">
+
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="auto"/>
+          <ColumnDefinition Width="200"/>
+          <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="*"/>
+          <RowDefinition Height="auto"/>
+          <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Marque" Grid.Column="1" Grid.Row="1" Style="{StaticResource LabelMandatoryStyle}"/>
+        <TextBox Grid.Column="2" Grid.Row="1" 
+                 Style="{StaticResource TextBoxMandatoryStyle}"
+                 Text="{Binding Path=SelectedItem.Name, ElementName=_BrandList,UpdateSourceTrigger=PropertyChanged}"/>
+
+      </Grid>
+
+      <GridSplitter Grid.Row="1" HorizontalAlignment="Stretch"/>
+
+      <Grid Grid.Row="2">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+      </Grid>
+      
+      
+      <StackPanel Grid.Row="2" Orientation="Horizontal">
+        <Button x:Name="AddModelButton"
+                  Content="{icon:FontAwesome Kind=PlusSolid}"
+                  Click="AddModelButton_Click" Margin="5"/>
+        <Button x:Name="DeleteModelButton"
+                  Content="{icon:FontAwesome Kind=TrashAltSolid}"
+                  Click="DeleteModelButton_Click" Margin="5"/>
+      </StackPanel>
+
+
+
+
+
+      <DataGrid Grid.Row="3" HorizontalAlignment="Stretch" ItemsSource="{Binding SelectedItem.Models, ElementName=_BrandList}"
+                AutoGenerateColumns="False"
+                CanUserAddRows="False"
+                CanUserDeleteRows="False"
+                IsReadOnly="False"
+                x:Name="DataGridModels">
+        <DataGrid.Columns>
+          <DataGridTextColumn Header="Modèl" Binding="{Binding Name}"/>
+        </DataGrid.Columns>
+      </DataGrid>
+      
+    </Grid>
+
+  </Grid>
+</UserControl>

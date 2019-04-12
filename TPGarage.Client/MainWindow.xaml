@@ -1,12 +1,13 @@
-﻿<Window x:Class="TPGarage.Client.MainWindow"
+﻿<metro:MetroWindow x:Class="TPGarage.Client.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TPGarage.Client"
         xmlns:views="clr-namespace:TPGarage.Client.Views"
+        xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Mon application" Height="450" Width="800">
   <Grid ShowGridLines="False">
 
     <Grid.RowDefinitions>
@@ -20,7 +21,10 @@
         <Separator/>
         <MenuItem x:Name="MenuItem_Exit" Header="Quitter" Click="MenuItem_Exit_Click"/>
       </MenuItem>
-      <MenuItem Header="Edition"/>
+      <MenuItem Header="Edition">
+        <MenuItem x:Name="MenuItem_AddItem"       Header="Ajouter"    Click="MenuItem_AddBrand_Click"/>
+        <MenuItem x:Name="MenuItem_DeleteItem"       Header="Supprimer"    Click="MenuItem_DeleteSelectedBrand_Click"/>
+      </MenuItem>
     </Menu>
 
     <TabControl Grid.Row="1">
@@ -49,11 +53,11 @@
           <Label Content="Km"                 Grid.Row="4" Grid.Column="1" Style="{StaticResource LabelStyle}"/>
           <Label Content="Date"               Grid.Row="5" Grid.Column="1" Style="{StaticResource LabelStyle}"/>
 
-          <ComboBox Name="marque"         Grid.Row="1" Grid.Column="2" Margin="2"/>
-          <ComboBox Name="model"          Grid.Row="2" Grid.Column="2" Margin="2"/>
-          <TextBox Name="immatriculation" Grid.Row="3" Grid.Column="2" Margin="2"/>
-          <TextBox Name="km"              Grid.Row="4" Grid.Column="2" Margin="2"/>
-          <DatePicker Name="date"         Grid.Row="5" Grid.Column="2" Margin="2"/>
+          <ComboBox Name="marque"         Grid.Row="1" Grid.Column="2" Margin="2" Style="{StaticResource ComboBoxStyle}"/>
+          <ComboBox Name="model"          Grid.Row="2" Grid.Column="2" Margin="2" Style="{StaticResource ComboBoxStyle}"/>
+          <TextBox Name="immatriculation" Grid.Row="3" Grid.Column="2" Margin="2" Style="{StaticResource TextBoxMandatoryStyle}"/>
+          <TextBox Name="km"              Grid.Row="4" Grid.Column="2" Margin="2" Style="{StaticResource TextBoxStyle}"/>
+          <DatePicker Name="date"         Grid.Row="5" Grid.Column="2" Margin="2" Style="{StaticResource DatePickerStyle}"/>
 
           <StackPanel Grid.Row="7" Grid.ColumnSpan="4" Orientation="Horizontal" FlowDirection="RightToLeft">
             <Button Content="OK"      Width="80" Margin="2"/>
@@ -67,9 +71,12 @@
       <TabItem Header="LiaisonData">
         <views:LiaisonData/>
       </TabItem>
+      <TabItem Header="BrandFormBinding" IsSelected="True" x:Name="_TabBrandFormBinding">
+        <views:BrandFormBinding x:Name="_BrandFormBinding"/>
+      </TabItem>
     </TabControl>
     
     
     
   </Grid>
-</Window>
+</metro:MetroWindow>

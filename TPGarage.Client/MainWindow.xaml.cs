@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MahApps.Metro.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,7 @@ namespace TPGarage.Client
     /// <summary>
     /// Logique d'interaction pour MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : MetroWindow
     {
         public MainWindow()
         {
@@ -28,6 +29,23 @@ namespace TPGarage.Client
         private void MenuItem_Exit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+
+        private void MenuItem_AddBrand_Click(object sender, RoutedEventArgs a)
+        {
+            if (_TabBrandFormBinding.IsSelected)
+            {
+                _BrandFormBinding.AddBrand();
+            }
+        }
+
+        private void MenuItem_DeleteSelectedBrand_Click(object sender, RoutedEventArgs a)
+        {
+            if (_TabBrandFormBinding.IsSelected)
+            {
+                _BrandFormBinding.DeleteSelectedBrand();
+            }
         }
     }
 }
